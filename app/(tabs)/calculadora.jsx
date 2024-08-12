@@ -1,51 +1,102 @@
-// import React, { useState } from "react";
-// import {Alert, Button, Text, View} from 'react-native';
-// import { TextInput } from "react-native-gesture-handler";
+import React from "react";
+import { Text, View, Button } from 'react-native';
+import { TextInput } from "react-native";
+import {useState} from "react"
 
-// const style = function(){
-//     return ({
-//         container: {
-//             flex: 1,
-//             justifycontent: 'center',
-//             alingitems: 'center',
-//         },
-//         input:{
-//             height: 40,
-//             margin: 12,
-//             borderWidth: 1,
-//             padding: 10,
-//         }
-//     })
-// }
+const style = function (){
+    return({
+        container: {
+            flex: 1,
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 50,
+    },
+        row:{
+            display: 'flex',
+            flexDirection: 'row',
+            gap: 10,
+    },
+        buttonWidth:{
+            width: 5
+        },
+        input: {
+            height: 40,
+            margin: 12,
+            borderWidth: 1,
+            padding: 10,
+          },
+})
+}
 
-// const Calculadora = function(){
-//     const[number1, onChangeNumber1] = useState('');
-//     const[number2, onChangeNumber2] = useState('');
-//     const[resultado, onChangeResultado] = useState('');
+export default helloWorld = function(){
+        const [text, onChangeText] = useState('Useless Text');
+        const [number1, onChangeNumber1] = useState('');
+        const [number2, onChangeNumber2] = useState('');
+        const [resultado, setResultado] = useState('');
+    
+        const soma = function(){
+             setResultado (Number(number1) + Number(number2))
+             onChangeNumber1 ('')
+             onChangeNumber2('')
+             return true
+        }
+        const subtracao = function(){
+             setResultado (Number(number1) - Number(number2))
+             onChangeNumber1 ('')
+             onChangeNumber2('')
+             return true
+        }
+        const multiplicacao = function(){
+             setResultado (Number(number1) * Number(number2))
+             onChangeNumber1 ('')
+             onChangeNumber2('')
+             return true
+        }
+        const divisao = function(){
+             setResultado (Number(number1) / Number(number2))
+             onChangeNumber1 ('')
+             onChangeNumber2('')
+             return true
+        }
+        console.log(resultado)
 
-//     const soma = function(){
-//         onChangeResultado = number1+number2
-//     }
-//     console.log(resultado)
-// }
-
-// return <View style={style().container}>
-//         <Text>Calculadora</Text>
-
-
-//         <TextInput
-//         onChangeText={onChangeNumber2}
-//         value={number2}
-//         placeholder="insira o segundo numero"
-//         keyboardType="numeric"
-//         style={style().input}
-//     />
-//     <Button
-//     title="+"
-//     onPress={() => Alert.alert('teste')}
-//     />
-//     <Text>Resultado: `${}`</Text>
-
-//    </View>
-
-// export default Calculadora;
+    return(
+        <View style={style().container}>
+            <Text>CALCULADORA</Text>
+            <Text>Digite 2 numeros</Text>
+                <View style={style().row}>
+                <TextInput style={style().input}
+                onChangeText={onChangeNumber1}
+                value={number1}
+        placeholder="Primeiro numero"
+        keyboardType="numeric"
+      />
+                <TextInput style={style().input}
+                onChangeText={onChangeNumber2}
+                value={number2}
+        placeholder="Segundo numero"
+        keyboardType="numeric"
+      />
+                    
+            </View>
+            <View style={style().row}>
+                <Button style={style().buttonWidth}
+              
+                onPress={() => soma()}
+                title="+"/>
+                <Button
+                onPress={() => subtracao()}
+                title="-"/>
+                <Button
+                onPress={() => multiplicacao()}
+                title="*"/>
+                <Button
+                onPress={() => divisao()}
+                title="/"/>
+            </View>
+            <Text>Seu resultado é: {resultado}</Text>
+        </View>
+        
+    )
+    
+}
